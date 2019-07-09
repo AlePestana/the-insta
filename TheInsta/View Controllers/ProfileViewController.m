@@ -8,6 +8,9 @@
 
 #import "ProfileViewController.h"
 #import "Parse/Parse.h"
+#import "AppDelegate.h"
+#import "LoginViewController.h"
+
 
 @interface ProfileViewController ()
 
@@ -24,8 +27,16 @@
     
     [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
         // PFUser.current() will now be nil
+        
+        // Setting the root view controller will immediately switch the screen to that view controller
+        AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+        appDelegate.window.rootViewController = loginViewController;
+        
+        [self dismissViewControllerAnimated:YES completion:nil];
     }];
-    [self dismissViewControllerAnimated:YES completion:nil];
+    
 }
 
 

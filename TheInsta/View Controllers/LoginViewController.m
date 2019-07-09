@@ -31,6 +31,8 @@
 //    self.signUpLabel.layer.borderColor = (UIColor.lightGrayColor);
 }
 
+
+// Tap gesture function
 - (IBAction)didTap:(id)sender {
     [self.view endEditing:YES];
 }
