@@ -44,6 +44,23 @@
     [PFUser logInWithUsernameInBackground:username password:password block:^(PFUser * user, NSError *  error) {
         if (error != nil) {
             NSLog(@"User log in failed: %@", error.localizedDescription);
+            
+            // --------------------------> Alert controller
+            // Alert controller setup
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"User Error" message:@"Invalid username/password" preferredStyle:(UIAlertControllerStyleAlert)];
+            
+            // create an OK action
+            UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                // handle response here.
+            }];
+            
+            // add the OK action to the alert controller
+            [alert addAction:okAction];
+            
+            [self presentViewController:alert animated:YES completion:^{}];
+            // --------------------------> Alert controller
+            
+            
         } else {
             // NSLog(@"User logged in successfully");
             // display view controller that needs to be shown after successful login
@@ -66,6 +83,7 @@
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }
+
 
 
 @end

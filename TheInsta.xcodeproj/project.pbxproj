@@ -20,6 +20,8 @@
 		F91C28D522D3FB3A00BB2160 /* TheInstaUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = F91C28D422D3FB3A00BB2160 /* TheInstaUITests.m */; };
 		F91C28E522D409DD00BB2160 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F91C28E422D409DD00BB2160 /* LoginViewController.m */; };
 		F91C28E822D412BE00BB2160 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F91C28E722D412BE00BB2160 /* SignUpViewController.m */; };
+		F91C28EB22D4603F00BB2160 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F91C28EA22D4603F00BB2160 /* HomeViewController.m */; };
+		F91C28EE22D4604800BB2160 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F91C28ED22D4604800BB2160 /* ProfileViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +71,10 @@
 		F91C28E422D409DD00BB2160 /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		F91C28E622D412BE00BB2160 /* SignUpViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
 		F91C28E722D412BE00BB2160 /* SignUpViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
+		F91C28E922D4603F00BB2160 /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		F91C28EA22D4603F00BB2160 /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		F91C28EC22D4604800BB2160 /* ProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		F91C28ED22D4604800BB2160 /* ProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,6 +192,10 @@
 				F91C28E422D409DD00BB2160 /* LoginViewController.m */,
 				F91C28E622D412BE00BB2160 /* SignUpViewController.h */,
 				F91C28E722D412BE00BB2160 /* SignUpViewController.m */,
+				F91C28E922D4603F00BB2160 /* HomeViewController.h */,
+				F91C28EA22D4603F00BB2160 /* HomeViewController.m */,
+				F91C28EC22D4604800BB2160 /* ProfileViewController.h */,
+				F91C28ED22D4604800BB2160 /* ProfileViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -414,7 +424,9 @@
 				F91C28E822D412BE00BB2160 /* SignUpViewController.m in Sources */,
 				F91C28B522D3FB3900BB2160 /* ViewController.m in Sources */,
 				F91C28C022D3FB3A00BB2160 /* main.m in Sources */,
+				F91C28EE22D4604800BB2160 /* ProfileViewController.m in Sources */,
 				F91C28B222D3FB3900BB2160 /* AppDelegate.m in Sources */,
+				F91C28EB22D4603F00BB2160 /* HomeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
