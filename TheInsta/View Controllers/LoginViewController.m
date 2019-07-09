@@ -7,6 +7,7 @@
 //
 
 #import "LoginViewController.h"
+#import "Parse/Parse.h"
 
 @interface LoginViewController ()
 
@@ -29,6 +30,32 @@
     self.logInLabel.layer.cornerRadius = 8;
 //    self.signUpLabel.layer.borderColor = (UIColor.lightGrayColor);
 }
+
+- (IBAction)didTap:(id)sender {
+    [self.view endEditing:YES];
+}
+
+
+// Function from "Parse" documentation for user login
+- (void)loginUser {
+    NSString *username = self.usernameTextField.text;
+    NSString *password = self.passwordTextField.text;
+    
+    [PFUser logInWithUsernameInBackground:username password:password block:^(PFUser * user, NSError *  error) {
+        if (error != nil) {
+            NSLog(@"User log in failed: %@", error.localizedDescription);
+        } else {
+            // NSLog(@"User logged in successfully");
+            // display view controller that needs to be shown after successful login
+            [self performSegueWithIdentifier:@"homeSegue" sender:nil];
+        }
+    }];
+}
+
+- (IBAction)didLogin:(UIButton *)sender {
+    [self loginUser];
+}
+
 
 
 #pragma mark - Navigation
