@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -18,6 +18,8 @@
 		F91C28C022D3FB3A00BB2160 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F91C28BF22D3FB3A00BB2160 /* main.m */; };
 		F91C28CA22D3FB3A00BB2160 /* TheInstaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F91C28C922D3FB3A00BB2160 /* TheInstaTests.m */; };
 		F91C28D522D3FB3A00BB2160 /* TheInstaUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = F91C28D422D3FB3A00BB2160 /* TheInstaUITests.m */; };
+		F91C28E522D409DD00BB2160 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F91C28E422D409DD00BB2160 /* LoginViewController.m */; };
+		F91C28E822D412BE00BB2160 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F91C28E722D412BE00BB2160 /* SignUpViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +65,10 @@
 		F91C28D022D3FB3A00BB2160 /* TheInstaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TheInstaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F91C28D422D3FB3A00BB2160 /* TheInstaUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TheInstaUITests.m; sourceTree = "<group>"; };
 		F91C28D622D3FB3A00BB2160 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F91C28E322D409DD00BB2160 /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		F91C28E422D409DD00BB2160 /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		F91C28E622D412BE00BB2160 /* SignUpViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
+		F91C28E722D412BE00BB2160 /* SignUpViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,7 +119,6 @@
 				440B9441F07335ED4B6FC70A /* Pods-TheInstaUITests.debug.xcconfig */,
 				05F912EFCECF30F6A704E253 /* Pods-TheInstaUITests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -142,6 +147,7 @@
 		F91C28AF22D3FB3900BB2160 /* TheInsta */ = {
 			isa = PBXGroup;
 			children = (
+				F91C28E222D409BC00BB2160 /* View Controllers */,
 				F91C28B022D3FB3900BB2160 /* AppDelegate.h */,
 				F91C28B122D3FB3900BB2160 /* AppDelegate.m */,
 				F91C28B322D3FB3900BB2160 /* ViewController.h */,
@@ -171,6 +177,17 @@
 				F91C28D622D3FB3A00BB2160 /* Info.plist */,
 			);
 			path = TheInstaUITests;
+			sourceTree = "<group>";
+		};
+		F91C28E222D409BC00BB2160 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				F91C28E322D409DD00BB2160 /* LoginViewController.h */,
+				F91C28E422D409DD00BB2160 /* LoginViewController.m */,
+				F91C28E622D412BE00BB2160 /* SignUpViewController.h */,
+				F91C28E722D412BE00BB2160 /* SignUpViewController.m */,
+			);
+			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -393,6 +410,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F91C28E522D409DD00BB2160 /* LoginViewController.m in Sources */,
+				F91C28E822D412BE00BB2160 /* SignUpViewController.m in Sources */,
 				F91C28B522D3FB3900BB2160 /* ViewController.m in Sources */,
 				F91C28C022D3FB3A00BB2160 /* main.m in Sources */,
 				F91C28B222D3FB3900BB2160 /* AppDelegate.m in Sources */,

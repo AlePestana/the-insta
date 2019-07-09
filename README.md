@@ -1,6 +1,6 @@
-# Project 4 - *TheInsta*
+# Project 4 - *the insta*
 
-**TheInsta** is a photo sharing app using Parse as its backend.
+**the insta** is a photo sharing app using Parse as its backend.
 
 Time spent: **30** hours spent in total
 
@@ -35,11 +35,12 @@ The following **optional** features are implemented:
 
 The following **additional** features are implemented:
 
-- [ ] List anything else that you can get done to improve the app functionality!
+- [ ] Add a confirm password functionality that presents an alert if the user doesn't confirm his password.
+- [ ] Add user validation when signing up. 
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
-1.
+1. Understand the difference between view controllers and the best way to organize and use them.
 2.
 
 ## Video Walkthrough

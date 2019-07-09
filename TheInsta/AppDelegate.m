@@ -19,8 +19,8 @@
     
     ParseClientConfiguration *config = [ParseClientConfiguration   configurationWithBlock:^(id<ParseMutableClientConfiguration> configuration) {
         
-        configuration.applicationId = @"codepathInstagram";
-        configuration.server = @"http://codepathfbinstagram.herokuapp.com/parse";
+        configuration.applicationId = @"the-insta-fbu";
+        configuration.server = @"http://the-insta-fbu.herokuapp.com/parse";
     }];
     
     [Parse initializeWithConfiguration:config];
