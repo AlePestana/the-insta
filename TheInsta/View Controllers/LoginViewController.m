@@ -45,7 +45,7 @@
         if (error != nil) {
             NSLog(@"User log in failed: %@", error.localizedDescription);
             
-            // --------------------------> Alert controller
+            
             // Alert controller setup
             UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"User Error" message:@"Invalid username/password" preferredStyle:(UIAlertControllerStyleAlert)];
             
@@ -57,9 +57,7 @@
             // add the OK action to the alert controller
             [alert addAction:okAction];
             
-            [self presentViewController:alert animated:YES completion:^{}];
-            // --------------------------> Alert controller
-            
+            [self presentViewController:alert animated:YES completion:^{}];            
             
         } else {
             // NSLog(@"User logged in successfully");
@@ -72,6 +70,7 @@
 - (IBAction)didLogin:(UIButton *)sender {
     [self loginUser];
 }
+
 
 
 

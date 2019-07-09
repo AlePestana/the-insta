@@ -44,57 +44,49 @@
     newUser.email = self.emailTextField.text;
     newUser.password = self.passwordTextField.text;
 
-    
-    
-    
-//    if (self.passwordTextField.text != self.confirmPasswordTextField.text) {
-//        do {
-//            // --------------------------> Alert controller
-//            // Alert controller setup
-//            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Confirm Password" message:@"Please enter a new password." preferredStyle:(UIAlertControllerStyleAlert)];
-//
-//            // create an OK action
-//            UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-//                // handle response here.
-//                self.passwordTextField.text = nil;
-//                self.confirmPasswordTextField.text = nil;
-//            }];
-//
-//            // add the OK action to the alert controller
-//            [alert addAction:okAction];
-//
-//
-////            self.passwordTextField.text = nil;
-////            self.confirmPasswordTextField.text = nil;
-//
-//
-//            [self presentViewController:alert animated:YES completion:^{}];
-//            // --------------------------> Alert controller
-//
-//        } while([self.passwordTextField.text length] == 0);
-//
-//
-//    }
-    
-    
-    
-    
-    // call sign up function on the object
-    [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {
-        if (error != nil) {
-            NSLog(@"Error: %@", error.localizedDescription);
-        } else {
-            // NSLog(@"User registered successfully");
-            
-            // manually segue to logged in view
-            [self dismissViewControllerAnimated:YES completion:nil];
-        }
-    }];
+    // Check if user typed the same password and confirmed it
+    if (self.passwordTextField.text != self.confirmPasswordTextField.text) {
+
+        // Alert controller setup
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"User Error" message:@"Invalid username/password" preferredStyle:(UIAlertControllerStyleAlert)];
+        
+        // create an OK action
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            // handle response here.
+        }];
+        
+        // add the OK action to the alert controller
+        [alert addAction:okAction];
+        
+        [self presentViewController:alert animated:YES completion:^{}];
+        
+        self.passwordTextField.text = nil;
+        self.confirmPasswordTextField.text = nil;
+        
+    } else {
+        
+        // call sign up function on the object
+        [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {
+            if (error != nil) {
+                NSLog(@"Error: %@", error.localizedDescription);
+            } else {
+                // NSLog(@"User registered successfully");
+                
+                // manually segue to logged in view
+                [self dismissViewControllerAnimated:YES completion:nil];
+            }
+        }];
+    }
 }
 
 - (IBAction)didSignUp:(UIButton *)sender {
     [self registerUser];
 }
+
+- (IBAction)didLogin:(UIButton *)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 
 
 /*
