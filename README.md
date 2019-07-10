@@ -19,9 +19,9 @@ The following **required** functionality is completed:
 The following **optional** features are implemented:
 
 - [ ] Run your app on your phone and use the camera to take the photo
-- [ ] Style the login page to look like the real Instagram login page.
-- [ ] Style the feed to look like the real Instagram feed.
-- [ ] User can use a tab bar to switch between all "Instagram" posts and posts published only by the user. AKA, tabs for Home Feed and Profile
+- [x] Style the login page to look like the real Instagram login page.
+- [x] Style the feed to look like the real Instagram feed.
+- [x] User can use a tab bar to switch between all "Instagram" posts and posts published only by the user. AKA, tabs for Home Feed and Profile
 - [ ] User can load more posts once he or she reaches the bottom of the feed using infinite scrolling.
 - [ ] Show the username and creation time for each post
 - [ ] After the user submits a new post, show a progress HUD while the post is being uploaded to Parse
@@ -36,6 +36,11 @@ The following **optional** features are implemented:
 The following **additional** features are implemented:
 
 - [x] Add a confirm password functionality that presents an alert if the user doesn't confirm his password.
+- [ ] Using AutoLayout, the Post cell adjusts it's layout for iPhone 7, Plus and SE device sizes as well as accommodate device rotation.
+- [ ] User can see profile information in Profile tab.
+- [ ] Profile tab contains a section with the users basic stats: # of posts, # of following people, # of followers.
+- [ ] Profile view includes the user's timeline (posts he has posted).
+- [ ] After creating a new post, user can see it in the timeline immediately without refetching the timeline from the network.
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 

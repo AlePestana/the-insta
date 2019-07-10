@@ -30,12 +30,21 @@
     // Code to initialize Parse
     // (See above section 'Parse `initializeWithConfiguration` vs `setApplicationId`', if you have not already set it up)
     
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     if (PFUser.currentUser) {
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"LoginViewController" bundle:nil];
         
-        self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"Ho eViewController"];
+        
+        self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"HomeViewController"];
+    } else {
+        
     }
     
+//    if (PFUser.currentUser) {
+//        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"LoginViewController" bundle:nil];
+//
+//        self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"HomeViewController"];
+//    }
+//
     return YES;
 }
 

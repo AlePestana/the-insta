@@ -20,6 +20,10 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+    <key>NSPhotoLibraryUsageDescription</key> <!-- added this for photo library permission -->
+    <string>Need library access to upload images</string> <!-- added this for photo library permission -->
+    <key>NSCameraUsageDescription</key> <!-- added this for camera permission -->
+    <string>Need camera access to take pictures</string> <!-- added this for camera permission -->
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
