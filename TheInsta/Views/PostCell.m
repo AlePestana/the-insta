@@ -15,6 +15,8 @@
 - (void)setPost:(Post *)post {
     _post = post;
     
+    self.profileImage.layer.cornerRadius = 27;
+    
     PFFileObject *userImageFile = post.image;
     [userImageFile getDataInBackgroundWithBlock:^(NSData * _Nullable data, NSError * _Nullable error) {
         if (!error) {
@@ -26,6 +28,14 @@
             self.likeCount.text = [NSString stringWithFormat:@"%@", post.likeCount];
             self.commentCount.text = [NSString stringWithFormat:@"%@", post.commentCount];
 
+            // Profile image
+            PFFileObject *profileImageFile = post.author[@"profileImage"];
+            
+            [profileImageFile getDataInBackgroundWithBlock:^(NSData * _Nullable data, NSError * _Nullable error) {
+                if (!error) {
+                    self.profileImage.image = [UIImage imageWithData:data];
+                }
+            }];
             
                 // Timestamp
             // Format createdAt date string

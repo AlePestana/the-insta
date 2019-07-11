@@ -40,6 +40,16 @@
             self.likeCount.text = [NSString stringWithFormat:@"%@", self.post.likeCount];
             self.commentCount.text = [NSString stringWithFormat:@"%@", self.post.commentCount];
             
+            
+            // Profile image
+            PFFileObject *profileImageFile = self.post.author[@"profileImage"];
+            
+            [profileImageFile getDataInBackgroundWithBlock:^(NSData * _Nullable data, NSError * _Nullable error) {
+                if (!error) {
+                    self.profileImageView.image = [UIImage imageWithData:data];
+                }
+            }];
+            
             // Timestamp
             // Format createdAt date string
             NSDateFormatter *formatter = [[NSDateFormatter alloc] init];

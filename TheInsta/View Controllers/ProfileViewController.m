@@ -27,13 +27,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    PFUser *user = [PFUser currentUser];
+    self.user = [PFUser currentUser];
 
     PFFileObject *profileImageFile = [PFUser currentUser][@"profileImage"];
     [profileImageFile getDataInBackgroundWithBlock:^(NSData * _Nullable data, NSError * _Nullable error) {
         if (!error) {
     self.profileImageView.image = [UIImage imageWithData:data];
-    self.nameLabel.text = user.username;
+    self.nameLabel.text = self.user.username;
         }
     }];
 }
