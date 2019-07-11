@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *commentCount;
 @property (weak, nonatomic) IBOutlet UILabel *caption;
 @property (weak, nonatomic) IBOutlet UILabel *timestamp;
+@property (weak, nonatomic) IBOutlet UIButton *likeButton;
 
 @end
 
@@ -58,6 +59,67 @@
         }
     }];
 }
+
+
+// Function that refreshes the data
+-(void) refreshData {
+    self.likeCount.text = [NSString stringWithFormat:@"%@", self.post.likeCount];
+    self.commentCount.text = [NSString stringWithFormat:@"%@", self.post.commentCount];
+}
+
+
+- (IBAction)didTapFavorite:(UIButton *)sender {
+    
+    // Update cell UI
+    if (self.post.favorited) {
+        self.post.favorited = NO;
+        // int number = [[dict objectForKey:@"integer"] intValue];
+        int count = [self.likeCount.text intValue];
+        self.post.likeCount = [NSNumber numberWithInt:(count-1)];
+        // self.post.likeCount -= 1;
+        self.likeButton.selected = NO;
+        
+        [self.likeButton setSelected:NO];
+        
+        [self refreshData];
+        
+        // Send a POST request to the POST favorites/create endpoint
+        // For favoriting
+        [Post updateLikeCount:self.post.likeCount withObjectID:self.post.objectId withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+            if(error != nil) {
+                NSLog(@"%@",error);
+            } else {
+                NSLog(@"Like successful");
+            }
+        }];
+        
+    } else {
+        self.post.favorited = YES;
+        
+        int count = [self.likeCount.text intValue];
+        self.post.likeCount = [NSNumber numberWithInt:(count+1)];
+        
+        // self.post.likeCount += 1;
+        self.likeButton.selected = YES;
+        // Refresh image
+        // [sender setImage:self.favoriteButton forState:UIControlStateSelected];
+        [self.likeButton setSelected:YES];
+        
+        [self refreshData];
+        
+        // Send a POST request to the POST favorites/create endpoint
+        // For favoriting
+        [Post updateLikeCount:self.post.likeCount withObjectID:self.post.objectId withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+            if(error != nil) {
+                NSLog(@"%@",error);
+            } else {
+            }
+        }];
+    }
+
+    
+}
+
 
 
 /*

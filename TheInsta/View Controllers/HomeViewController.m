@@ -127,8 +127,6 @@
 // Function to load more data - infinite scrolling
 - (void)loadMoreData{
     
-    // ... Create the NSURLRequest (myRequest) ...
-    // NSURLRequest *request = [NSURLRequest requestWithURL:url];
     [self fetchPosts];
     
     
@@ -137,7 +135,7 @@
     [query includeKey:@"author"];
     [query orderByDescending:@"createdAt"];
     // [query whereKey:@"likesCount" greaterThan:@100];
-    // query.limit = 20;
+    query.limit = self.posts.count;
     
     // fetch data asynchronously
     [query findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {

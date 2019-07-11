@@ -58,4 +58,18 @@
 }
 
 
++ (void) updateLikeCount: (NSNumber * _Nullable) likeCount withObjectID: ( NSString * _Nullable ) objectID withCompletion: (PFBooleanResultBlock  _Nullable)completion {
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"Post"];
+
+    // Retrieve the object by id
+    [query getObjectInBackgroundWithId:objectID block:^(PFObject *Post, NSError *error) {
+        // Now let's update it with some new data. In this case, only cheatMode and score
+        // will get sent to the cloud. playerName hasn't changed.
+        Post[@"likeCount"] = likeCount;
+        [Post saveInBackground];
+        
+    }];
+}
+
 @end
