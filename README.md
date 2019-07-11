@@ -13,7 +13,7 @@ The following **required** functionality is completed:
 - [x] The current signed in user is persisted across app restarts
 - [x] User can take a photo, add a caption, and post it to "Instagram"
 - [x] User can view the last 20 posts submitted to "Instagram"
-- [xs] User can pull to refresh the last 20 posts submitted to "Instagram"
+- [x] User can pull to refresh the last 20 posts submitted to "Instagram"
 - [ ] User can tap a post to view post details, including timestamp and caption.
 
 The following **optional** features are implemented:
@@ -40,7 +40,6 @@ The following **additional** features are implemented:
 - [ ] User can see profile information in Profile tab.
 - [ ] Profile tab contains a section with the users basic stats: # of posts, # of following people, # of followers.
 - [ ] Profile view includes the user's timeline (posts he has posted).
-- [ ] After creating a new post, user can see it in the timeline immediately without refetching the timeline from the network.
 - [ ] Add placeholder to caption text view.
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):

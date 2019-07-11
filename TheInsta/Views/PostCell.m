@@ -45,26 +45,6 @@
         }
     }];
     
-    
-
-    
-    // Assign values to my properties
-//    self.authorName.text = tweet.user.name;
-//    NSString *accountBase = @"@";
-//    self.authorAccountName.text = [accountBase stringByAppendingString:tweet.user.screenName];
-//    self.tweetText.text = tweet.text;
-//    self.retweetCount.text = [NSString stringWithFormat:@"%d", tweet.retweetCount];
-//    self.favoriteCount.text = [NSString stringWithFormat:@"%d",tweet.favoriteCount];
-//
-//    self.date.text = tweet.createdAtString;
-    
-//    NSString *profileImageURL = tweet.user.profileImage;
-    
-//    self.profileImage.image = nil;
-//    NSURL *url = [NSURL URLWithString:profileImageURL];
-//    [self.profileImage setImageWithURL:url placeholderImage:[UIImage imageNamed:@"user_icon.png"]];
-//
-    
 }
 
 - (void)awakeFromNib {

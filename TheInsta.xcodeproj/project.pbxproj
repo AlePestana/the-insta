@@ -25,6 +25,7 @@
 		F91C28F222D55F8400BB2160 /* Post.m in Sources */ = {isa = PBXBuildFile; fileRef = F91C28F122D55F8400BB2160 /* Post.m */; };
 		F91C28F522D56B3C00BB2160 /* ComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F91C28F422D56B3C00BB2160 /* ComposeViewController.m */; };
 		F997E71422D5D8840049D69E /* PostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F997E71322D5D8840049D69E /* PostCell.m */; };
+		F9F33F9E22D6F7A600032267 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9F33F9D22D6F7A600032267 /* DetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +85,8 @@
 		F91C28F422D56B3C00BB2160 /* ComposeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ComposeViewController.m; sourceTree = "<group>"; };
 		F997E71222D5D8840049D69E /* PostCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PostCell.h; sourceTree = "<group>"; };
 		F997E71322D5D8840049D69E /* PostCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PostCell.m; sourceTree = "<group>"; };
+		F9F33F9C22D6F7A600032267 /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		F9F33F9D22D6F7A600032267 /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -209,6 +212,8 @@
 				F91C28ED22D4604800BB2160 /* ProfileViewController.m */,
 				F91C28F322D56B3C00BB2160 /* ComposeViewController.h */,
 				F91C28F422D56B3C00BB2160 /* ComposeViewController.m */,
+				F9F33F9C22D6F7A600032267 /* DetailViewController.h */,
+				F9F33F9D22D6F7A600032267 /* DetailViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -458,6 +463,7 @@
 				F91C28C022D3FB3A00BB2160 /* main.m in Sources */,
 				F91C28EE22D4604800BB2160 /* ProfileViewController.m in Sources */,
 				F91C28B222D3FB3900BB2160 /* AppDelegate.m in Sources */,
+				F9F33F9E22D6F7A600032267 /* DetailViewController.m in Sources */,
 				F91C28EB22D4603F00BB2160 /* HomeViewController.m in Sources */,
 				F91C28F222D55F8400BB2160 /* Post.m in Sources */,
 				F997E71422D5D8840049D69E /* PostCell.m in Sources */,
