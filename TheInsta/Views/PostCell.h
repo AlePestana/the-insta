@@ -24,6 +24,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *nameInCaption;
 @property (weak, nonatomic) IBOutlet UILabel *timestamp;
 
+@property (weak, nonatomic) IBOutlet UIButton *likeButton;
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -23,6 +23,8 @@
     // Do any additional setup after loading the view.
 }
 
+
+// Function to logout - go back to login view controller
 - (IBAction)didLogout:(UIBarButtonItem *)sender {
     
     [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
@@ -38,7 +40,6 @@
     }];
     
 }
-
 
 
 /*

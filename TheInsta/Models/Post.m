@@ -18,6 +18,7 @@
     @dynamic image;
     @dynamic likeCount;
     @dynamic commentCount;
+    @dynamic favorited;
 
 
     + (nonnull NSString *)parseClassName {
@@ -30,6 +31,8 @@
     newPost.image = [self getPFFileFromImage:image];
     newPost.author = [PFUser currentUser];
     newPost.caption = caption;
+    // withLikeCount: (int nul)likeCount
+        // call likeCount here
     newPost.likeCount = @(0);
     newPost.commentCount = @(0);
     

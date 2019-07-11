@@ -11,14 +11,18 @@
 #import "Post.h"
 #import "Parse/Parse.h"
 #import "DetailViewController.h"
+#import <UIKit/UIKit.h>
 
-@interface HomeViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface HomeViewController () <UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate>
 
 @property (strong, nonatomic) NSMutableArray *posts;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
+
+// Flag that indicates when the app has already made a request to the server
+@property (assign, nonatomic) BOOL isMoreDataLoading;
 
 
 @end
@@ -44,6 +48,8 @@
     [self.tableView insertSubview:self.refreshControl atIndex:0];
 }
 
+
+// Function to fetch posts - call Parse get function
 - (void)fetchPosts {
     // construct query
     PFQuery *query = [PFQuery queryWithClassName:@"Post"];
@@ -67,6 +73,7 @@
     }];
     
 }
+
 
 // Function that makes a network request to get updated data
 // Updates the tableView with the new data
@@ -96,6 +103,7 @@
 }
 
 
+// Function of table view data source protocol
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     // Deque cell
     PostCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PostCell" forIndexPath:indexPath];
@@ -110,8 +118,88 @@
     return cell;
 }
 
+
+// Function of table view data source protocol
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return  self.posts.count;
 }
+
+// Function to load more data - infinite scrolling
+- (void)loadMoreData{
+    
+    // ... Create the NSURLRequest (myRequest) ...
+    // NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    [self fetchPosts];
+    
+    
+    // construct query
+    PFQuery *query = [PFQuery queryWithClassName:@"Post"];
+    [query includeKey:@"author"];
+    [query orderByDescending:@"createdAt"];
+    // [query whereKey:@"likesCount" greaterThan:@100];
+    // query.limit = 20;
+    
+    // fetch data asynchronously
+    [query findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
+        // Checks to see if my array did get filled with posts
+        if (posts != nil) {
+            // do something with the array of object returned by the call
+            // Update flag
+            self.isMoreDataLoading = false;
+            
+            // ... Use the new data to update the data source ...
+            // ------------------------------------------------------------------>>> NEED TO UPDATE DATA SOURCE
+            
+            // Update table view
+            [self.tableView reloadData];
+        } else {
+            NSLog(@"%@", error.localizedDescription);
+        }
+        [self.refreshControl endRefreshing];
+    }];
+
+    
+    // Configure session so that completion handler is executed on main UI thread
+//    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+//
+//    NSURLSession *session  = [NSURLSession sessionWithConfiguration:configuration delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
+//
+//    NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *requestError) {
+//        if (requestError != nil) {
+//
+//        }
+//        else
+//        {
+//            // Update flag
+//            self.isMoreDataLoading = false;
+//
+//            // ... Use the new data to update the data source ...
+//            // ------------------------------------------------------------------>>> NEED TO UPDATE DATA SOURCE
+//
+//            // Reload the tableView now that there is new data
+//            [self.tableView reloadData];
+//        }
+//    }];
+//    [task resume];
+}
+
+
+// Function to implement infinite scrolling
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    if(!self.isMoreDataLoading){
+        
+        // Calculate the position of one screen length before the bottom of the results
+        int scrollViewContentHeight = self.tableView.contentSize.height;
+        int scrollOffsetThreshold = scrollViewContentHeight - self.tableView.bounds.size.height;
+        
+        // When the user has scrolled past the threshold, start requesting
+        if(scrollView.contentOffset.y > scrollOffsetThreshold && self.tableView.isDragging) {
+            self.isMoreDataLoading = true;
+            [self loadMoreData];
+        }
+        
+    }
+}
+
 
 @end

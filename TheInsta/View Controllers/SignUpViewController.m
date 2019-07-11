@@ -31,10 +31,14 @@
     self.signUpLabel.layer.cornerRadius = 8;
 }
 
+
+// Tap gesture function
 - (IBAction)onTap:(id)sender {
     [self.view endEditing:YES];
 }
 
+
+// Function to register user - Parse function to post to database
 - (void)registerUser {
     // initialize a user object
     PFUser *newUser = [PFUser user];
@@ -79,14 +83,17 @@
     }
 }
 
+
+// Function to sign up
 - (IBAction)didSignUp:(UIButton *)sender {
     [self registerUser];
 }
 
+
+// Function to go back to login view controller
 - (IBAction)didLogin:(UIButton *)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
-
 
 
 /*

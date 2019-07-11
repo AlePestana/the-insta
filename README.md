@@ -37,11 +37,10 @@ The following **additional** features are implemented:
 
 - [x] Add a confirm password functionality that presents an alert if the user doesn't confirm his password.
 - [ ] Using AutoLayout, the Post cell adjusts it's layout for iPhone 7, Plus and SE device sizes as well as accommodate device rotation.
-- [ ] User can see profile information in Profile tab.
-- [ ] Profile tab contains a section with the users basic stats: # of posts, # of following people, # of followers.
+- [ ] User can see profile information in Profile tab, which contains a section with the users basic stats: # of posts, # of following people, # of followers.
 - [ ] Profile view includes the user's timeline (posts he has posted).
 - [ ] Add placeholder to caption text view.
-- [ ] User can tap favorite and increase count.
+- [ ] Add custom action for center tab using a tab bar delegate.
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 

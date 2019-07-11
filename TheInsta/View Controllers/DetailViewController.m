@@ -36,6 +36,8 @@
             self.nameLabel.text = self.post.author.username;
             self.caption.text = self.post.caption;
             self.postImageView.image = [UIImage imageWithData:data];
+            self.likeCount.text = [NSString stringWithFormat:@"%@", self.post.likeCount];
+            self.commentCount.text = [NSString stringWithFormat:@"%@", self.post.commentCount];
             
             // Timestamp
             // Format createdAt date string
@@ -56,7 +58,6 @@
         }
     }];
 }
-
 
 
 /*

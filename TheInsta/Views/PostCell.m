@@ -23,6 +23,9 @@
             self.nameInCaption.text = post.author.username;
             self.caption.text = post.caption;
             self.image.image = [UIImage imageWithData:data];
+            self.likeCount.text = [NSString stringWithFormat:@"%@", post.likeCount];
+            self.commentCount.text = [NSString stringWithFormat:@"%@", post.commentCount];
+
             
                 // Timestamp
             // Format createdAt date string
@@ -45,6 +48,58 @@
     }];
     
 }
+
+
+// Function that refreshes the data
+-(void) refreshData {
+    self.likeCount.text = [NSString stringWithFormat:@"%@", self.post.likeCount];
+    self.commentCount.text = [NSString stringWithFormat:@"%@", self.post.commentCount];
+}
+
+- (IBAction)didTapFavorite:(UIButton *)sender {
+
+// Update the local tweet model
+
+// Update cell UI
+if (self.post.favorited) {
+    self.post.favorited = NO;
+    // int number = [[dict objectForKey:@"integer"] intValue];
+    int count = [self.likeCount.text intValue];
+    self.post.likeCount = [NSNumber numberWithInt:(count-1)];
+    // self.post.likeCount -= 1;
+    self.likeButton.selected = NO;
+    
+    [self.likeButton setSelected:NO];
+    
+    [self refreshData];
+    
+    // Send a POST request to the POST favorites/create endpoint
+    // For favoriting
+    // --------------------------->>> ADD PARSE POST FUNCTION
+    
+    
+} else {
+    self.post.favorited = YES;
+    
+    int count = [self.likeCount.text intValue];
+    self.post.likeCount = [NSNumber numberWithInt:(count+1)];
+    
+    // self.post.likeCount += 1;
+    self.likeButton.selected = YES;
+    // Refresh image
+    // [sender setImage:self.favoriteButton forState:UIControlStateSelected];
+    [self.likeButton setSelected:YES];
+    
+    [self refreshData];
+    
+    // Send a POST request to the POST favorites/create endpoint
+    // For favoriting
+    // --------------------------->>> ADD PARSE POST FUNCTION
+    
+}
+
+}
+
 
 - (void)awakeFromNib {
     [super awakeFromNib];

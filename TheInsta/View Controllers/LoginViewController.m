@@ -69,12 +69,11 @@
     }];
 }
 
+
+// Function to login
 - (IBAction)didLogin:(UIButton *)sender {
     [self loginUser];
 }
-
-
-
 
 
 #pragma mark - Navigation

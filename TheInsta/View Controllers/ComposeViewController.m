@@ -25,15 +25,51 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.captionTextView.text = @"start typing";
+    self.captionTextView.textColor = [UIColor lightGrayColor];
 }
+
+
+// Function to put placeholder on text view
+- (BOOL)textViewShouldBeginEditing:(UITextView *)textView {
+    self.captionTextView.text = @"";
+    self.captionTextView.textColor = [UIColor lightGrayColor];
+    
+    return YES;
+}
+
+
+// Function to put placeholder on text view
+-(void) textViewDidChange:(UITextView *)textView {
+    
+    if(self.captionTextView.text.length == 0) {
+        self.captionTextView.textColor = [UIColor lightGrayColor];
+        self.captionTextView.text = @"Comment";
+        [self.captionTextView resignFirstResponder];
+    }
+}
+
+
+// Function to put placeholder on text view
+-(void) textViewShouldEndEditing:(UITextView *)textView {
+    
+    if(self.captionTextView.text.length == 0) {
+        self.captionTextView.textColor = [UIColor lightGrayColor];
+        self.captionTextView.text = @"Comment";
+        [self.captionTextView resignFirstResponder];
+    }
+}
+
+
+// Function for tap gesture
 - (IBAction)didTap:(id)sender {
     [self.view endEditing:YES];
 }
 
 
+// Function to display camera / all photos to post photo
 - (IBAction)didTapImage:(UIButton *)sender {
 
-//- (IBAction)didTapImage:(UITapGestureRecognizer *)sender {
     UIImagePickerController *imagePickerVC = [UIImagePickerController new];
     imagePickerVC.delegate = self;
     imagePickerVC.allowsEditing = YES;
@@ -51,7 +87,7 @@
 }
 
 
-// Delegate method
+// Delegate method for image picker controller
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
     
     // Get the image captured by the UIImagePickerController
@@ -70,6 +106,7 @@
 }
 
 
+// Functino to resize images for the postUserImage's required weight
 - (UIImage *)resizeImage:(UIImage *)image withSize:(CGSize)size {
     UIImageView *resizeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)];
     
@@ -85,6 +122,7 @@
 }
 
 
+// Function to post
 - (IBAction)didPost:(UIBarButtonItem *)sender {
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [Post postUserImage:self.postImageView.image withCaption:self.captionTextView.text withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
@@ -98,7 +136,6 @@
             }
     }];
 }
-
 
 
 #pragma mark - Navigation
