@@ -28,9 +28,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    // _post = post;
-    
-    
     
     PFFileObject *userImageFile = self.post.image;
     [userImageFile getDataInBackgroundWithBlock:^(NSData * _Nullable data, NSError * _Nullable error) {
@@ -59,6 +56,8 @@
         }
     }];
 }
+
+
 
 /*
 #pragma mark - Navigation

@@ -478,7 +478,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="start typing..." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="yYA-NY-nqp">
-                                <rect key="frame" x="0.0" y="329" width="375" height="112"/>
+                                <rect key="frame" x="0.0" y="329" width="375" height="75"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -488,7 +488,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zUi-IY-VpJ">
                                 <rect key="frame" x="0.0" y="64" width="375" height="220"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.84727169690000004" green="0.84727169690000004" blue="0.84727169690000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" red="0.81272385619999998" green="0.81272385619999998" blue="0.81272385619999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="22"/>
                                 <state key="normal" title="upload image">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -503,7 +503,11 @@
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <viewLayoutGuide key="safeArea" id="t7e-Kd-Qs0"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="F6m-VO-kgp" appends="YES" id="Dcm-6E-dwB"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="g3O-6D-ECn">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="twitter-icon" id="UBF-ID-GTO">
@@ -519,6 +523,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KBH-sp-foq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="F6m-VO-kgp">
+                    <connections>
+                        <action selector="didTap:" destination="h2d-V2-rZS" id="sXk-lc-yty"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2904.8000000000002" y="1017.84107946027"/>
         </scene>

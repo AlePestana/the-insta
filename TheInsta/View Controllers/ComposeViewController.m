@@ -8,6 +8,7 @@
 
 #import "ComposeViewController.h"
 #import "Post.h"
+#import "MBProgressHUD.h"
 
 
 @interface ComposeViewController () <UITableViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
@@ -25,6 +26,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
+- (IBAction)didTap:(id)sender {
+    [self.view endEditing:YES];
+}
+
 
 - (IBAction)didTapImage:(UIButton *)sender {
 
@@ -32,7 +37,7 @@
     UIImagePickerController *imagePickerVC = [UIImagePickerController new];
     imagePickerVC.delegate = self;
     imagePickerVC.allowsEditing = YES;
-imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
+    imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
     
     [self presentViewController:imagePickerVC animated:YES completion:nil];
     
@@ -81,11 +86,13 @@ imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
 
 
 - (IBAction)didPost:(UIBarButtonItem *)sender {
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [Post postUserImage:self.postImageView.image withCaption:self.captionTextView.text withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
             if(error != nil)
             {
                 NSLog(@"%@",error);
             } else {
+                [MBProgressHUD hideHUDForView:self.view animated:YES];
                 [self.parentViewController.tabBarController setSelectedIndex:0];
                 // [self dismissViewControllerAnimated:YES completion:nil];
             }
