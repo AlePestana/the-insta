@@ -91,7 +91,7 @@
         
         DetailViewController *detailsViewController = [segue destinationViewController];
         detailsViewController.post = post;
-        NSLog(@"Success");
+        // NSLog(@"Success");
     }
 }
 

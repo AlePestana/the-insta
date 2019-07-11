@@ -9,6 +9,7 @@
 #import "DetailViewController.h"
 #import "Post.h"
 #import "Parse/Parse.h"
+#import "NSDate+DateTools.h"
 
 @interface DetailViewController ()
 
@@ -38,6 +39,21 @@
             self.nameLabel.text = self.post.author.username;
             self.caption.text = self.post.caption;
             self.postImageView.image = [UIImage imageWithData:data];
+            
+            // Timestamp
+            // Format createdAt date string
+            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+            // Configure the input format to parse the date string
+            formatter.dateFormat = @"E MMM d HH:mm:ss Z y";
+            // Convert String to Date
+            NSDate *date = self.post.createdAt;
+            // Configure output format
+            // Date
+            NSDate *timeAgoDate = [NSDate dateWithTimeInterval:0 sinceDate:date];
+            
+            // Convert Date to String
+            self.timestamp.text = timeAgoDate.shortTimeAgoSinceNow;
+            
         } else {
             NSLog(@"Image not taken from PFFile");
         }

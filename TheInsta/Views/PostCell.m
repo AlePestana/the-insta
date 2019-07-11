@@ -8,27 +8,10 @@
 
 #import "PostCell.h"
 #import "Post.h"
+#import "NSDate+DateTools.h"
 
 @implementation PostCell
 
-//- (void) refreshDataAtCell:(PostCell*)cell withPost:(Post*)currentPost {
-//    
-//    PFFileObject *userImageFile = currentPost.image;
-//    [userImageFile getDataInBackgroundWithBlock:^(NSData * _Nullable data, NSError * _Nullable error) {
-//        if (!error) {
-//            cell.image.image = [UIImage imageWithData:data];
-//        } else {
-//            NSLog(@"Image not taken from PFFile");
-//        }
-//    }];
-//    
-//    self.name.text = currentPost.userID;
-//    self.nameInCaption.text = currentPost.userID;
-//    self.caption.text = currentPost.caption;
-//    
-//}
-
-// viewWillAppear
 - (void)setPost:(Post *)post {
     _post = post;
     
@@ -40,6 +23,22 @@
             self.nameInCaption.text = post.author.username;
             self.caption.text = post.caption;
             self.image.image = [UIImage imageWithData:data];
+            
+                // Timestamp
+            // Format createdAt date string
+            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+            // Configure the input format to parse the date string
+            formatter.dateFormat = @"E MMM d HH:mm:ss Z y";
+            // Convert String to Date
+            NSDate *date = post.updatedAt;
+            // Configure output format
+            // Date
+            NSDate *timeAgoDate = [NSDate dateWithTimeInterval:0 sinceDate:date];
+            
+            // Convert Date to String
+            self.timestamp.text = timeAgoDate.shortTimeAgoSinceNow;
+            
+            
         } else {
             NSLog(@"Image not taken from PFFile");
         }

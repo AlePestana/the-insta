@@ -24,9 +24,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *nameInCaption;
 @property (weak, nonatomic) IBOutlet UILabel *timestamp;
 
-// - (void) refreshDataAtCell:(PostCell*)cell withPost:(Post*)currentPost;
-
-
 @end
 
 NS_ASSUME_NONNULL_END
