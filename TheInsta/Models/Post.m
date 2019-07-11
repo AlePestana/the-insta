@@ -25,6 +25,7 @@
         return @"Post";
     }
 
+// Function to post a post's image on Parse's database
 + (void) postUserImage: ( UIImage * _Nullable )image withCaption: ( NSString * _Nullable )caption withCompletion: (PFBooleanResultBlock  _Nullable)completion {
     
     Post *newPost = [Post new];
@@ -40,7 +41,7 @@
 }
 
 
-
+// Function to get image
 + (PFFileObject *)getPFFileFromImage: (UIImage * _Nullable)image {
     
     // check if image is not nil
@@ -58,6 +59,7 @@
 }
 
 
+// Function to update like count on the Parse database
 + (void) updateLikeCount: (NSNumber * _Nullable) likeCount withObjectID: ( NSString * _Nullable ) objectID withCompletion: (PFBooleanResultBlock  _Nullable)completion {
     
     PFQuery *query = [PFQuery queryWithClassName:@"Post"];
@@ -69,6 +71,24 @@
         Post[@"likeCount"] = likeCount;
         [Post saveInBackground];
         
+    }];
+}
+
+
+// Function to post a user's profile image on Parse's database
++ (void) postProfileUserImage: ( UIImage * _Nullable )profileImage withCompletion: (PFBooleanResultBlock  _Nullable)completion {
+    
+    // Set user to the current user
+    // PFUser *user = [PFUser currentUser];
+    // PFQuery *query = [PFQuery queryWithClassName:@"User"];
+    
+    NSData *imageData = UIImagePNGRepresentation(profileImage);
+    
+    [PFUser currentUser][@"profileImage"] = [PFFileObject fileObjectWithName:@"profileImage.png" data:imageData];
+    [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        if (error != nil) {
+            NSLog(@"%@", error.localizedDescription);
+        }
     }];
 }
 

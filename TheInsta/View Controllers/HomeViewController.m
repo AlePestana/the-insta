@@ -112,8 +112,6 @@
     Post *post = self.posts[indexPath.row];
     cell.post = post;
     
-    // [cell refreshDataAtCell:cell withPost:post];
-    
     // Return cell to the table view
     return cell;
 }
@@ -123,6 +121,7 @@
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return  self.posts.count;
 }
+
 
 // Function to load more data - infinite scrolling
 - (void)loadMoreData{
@@ -155,30 +154,6 @@
         }
         [self.refreshControl endRefreshing];
     }];
-
-    
-    // Configure session so that completion handler is executed on main UI thread
-//    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-//
-//    NSURLSession *session  = [NSURLSession sessionWithConfiguration:configuration delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
-//
-//    NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *requestError) {
-//        if (requestError != nil) {
-//
-//        }
-//        else
-//        {
-//            // Update flag
-//            self.isMoreDataLoading = false;
-//
-//            // ... Use the new data to update the data source ...
-//            // ------------------------------------------------------------------>>> NEED TO UPDATE DATA SOURCE
-//
-//            // Reload the tableView now that there is new data
-//            [self.tableView reloadData];
-//        }
-//    }];
-//    [task resume];
 }
 
 

@@ -28,7 +28,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (void) updateLikeCount: (NSNumber * _Nullable) likeCount withObjectID: ( NSString * _Nullable ) objectID withCompletion: (PFBooleanResultBlock  _Nullable)completion;
 
-
++ (void) postProfileUserImage: ( UIImage * _Nullable )profileImage withCompletion: (PFBooleanResultBlock  _Nullable)completion;
 
 @end
 

@@ -26,7 +26,7 @@ The following **optional** features are implemented:
 - [x] Show the username and creation time for each post
 - [x] After the user submits a new post, show a progress HUD while the post is being uploaded to Parse
 - User Profiles:
-- [ ] Allow the logged in user to add a profile photo
+- [x] Allow the logged in user to add a profile photo
 - [ ] Display the profile photo with each post
 - [ ] Tapping on a post's username or profile photo goes to that user's profile page
 - [ ] User can comment on a post and see all comments for each post in the post details screen.
@@ -39,7 +39,7 @@ The following **additional** features are implemented:
 - [ ] Using AutoLayout, the Post cell adjusts it's layout for iPhone 7, Plus and SE device sizes as well as accommodate device rotation.
 - [ ] User can see profile information in Profile tab, which contains a section with the users basic stats: # of posts, # of following people, # of followers.
 - [ ] Profile view includes the user's timeline (posts he has posted).
-- [ ] Add placeholder to caption text view.
+- [x] Add placeholder to caption text view.
 - [ ] Add custom action for center tab using a tab bar delegate.
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):

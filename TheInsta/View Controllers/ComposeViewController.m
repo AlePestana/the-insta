@@ -11,7 +11,7 @@
 #import "MBProgressHUD.h"
 
 
-@interface ComposeViewController () <UITableViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface ComposeViewController () <UITableViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextViewDelegate>
 
 @property (strong, nonatomic) UIImage *selectedImage;
 @property (weak, nonatomic) IBOutlet UIImageView *postImageView;
@@ -27,6 +27,7 @@
     // Do any additional setup after loading the view.
     self.captionTextView.text = @"start typing";
     self.captionTextView.textColor = [UIColor lightGrayColor];
+    self.captionTextView.delegate = self;
 }
 
 
@@ -44,7 +45,7 @@
     
     if(self.captionTextView.text.length == 0) {
         self.captionTextView.textColor = [UIColor lightGrayColor];
-        self.captionTextView.text = @"Comment";
+        self.captionTextView.text = @"start typing";
         [self.captionTextView resignFirstResponder];
     }
 }
@@ -55,7 +56,7 @@
     
     if(self.captionTextView.text.length == 0) {
         self.captionTextView.textColor = [UIColor lightGrayColor];
-        self.captionTextView.text = @"Comment";
+        self.captionTextView.text = @"start typing";
         [self.captionTextView resignFirstResponder];
     }
 }

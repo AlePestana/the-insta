@@ -10,9 +10,15 @@
 #import "Parse/Parse.h"
 #import "AppDelegate.h"
 #import "LoginViewController.h"
+#import "Post.h"
 
 
-@interface ProfileViewController ()
+@interface ProfileViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+
+@property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
+@property (strong, nonatomic) UIImage *selectedImage;
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+
 
 @end
 
@@ -21,6 +27,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    PFUser *user = [PFUser currentUser];
+
+    PFFileObject *profileImageFile = [PFUser currentUser][@"profileImage"];
+    [profileImageFile getDataInBackgroundWithBlock:^(NSData * _Nullable data, NSError * _Nullable error) {
+        if (!error) {
+    self.profileImageView.image = [UIImage imageWithData:data];
+    self.nameLabel.text = user.username;
+        }
+    }];
 }
 
 
@@ -40,6 +55,82 @@
     }];
     
 }
+
+
+// Function for tap gesture
+- (IBAction)didTap:(id)sender {
+    [self.view endEditing:YES];
+}
+
+
+
+// Delegate method for image picker controller
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
+    
+    // Get the image captured by the UIImagePickerController
+    // UIImage *originalImage = info[UIImagePickerControllerOriginalImage];
+    UIImage *editedImage = info[UIImagePickerControllerEditedImage];
+    
+    // Do something with the images (based on your use case)
+    
+    self.selectedImage  = editedImage;
+    self.profileImageView.image = [self resizeImage:editedImage withSize:CGSizeMake(200, 200)];
+    
+    
+    
+    // Dismiss UIImagePickerController to go back to your original view controller
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+    if(self.profileImageView.image == nil) {
+        NSLog(@"No profile image");
+    } else {
+        [Post postProfileUserImage:self.profileImageView.image withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+            if(error != nil)
+            {
+                NSLog(@"%@",error);
+            } else {
+                // [self dismissViewControllerAnimated:YES completion:nil];
+            }
+        }];
+    }
+}
+
+
+// Functino to resize images for the postUserImage's required weight
+- (UIImage *)resizeImage:(UIImage *)image withSize:(CGSize)size {
+    UIImageView *resizeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)];
+    
+    resizeImageView.contentMode = UIViewContentModeScaleAspectFill;
+    resizeImageView.image = image;
+    
+    UIGraphicsBeginImageContext(size);
+    [resizeImageView.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return newImage;
+}
+
+
+// Functio to add user's profile image
+- (IBAction)didTapProfileImage:(id)sender {
+    
+    UIImagePickerController *imagePickerVC = [UIImagePickerController new];
+    imagePickerVC.delegate = self;
+    imagePickerVC.allowsEditing = YES;
+    imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
+    
+    [self presentViewController:imagePickerVC animated:YES completion:nil];
+    
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
+    }
+    else {
+        NSLog(@"Camera 🚫 available so we will use photo library instead");
+        imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    }
+}
+
 
 
 /*
