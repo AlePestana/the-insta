@@ -275,12 +275,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rB6-CT-mnF">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="500" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rB6-CT-mnF">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="401" id="tqU-Af-vqi">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PostCell" rowHeight="401" id="tqU-Af-vqi" customClass="PostCell">
                                         <rect key="frame" x="0.0" y="28" width="375" height="401"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tqU-Af-vqi" id="3yH-YR-9gV">
@@ -347,6 +347,16 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="caption" destination="zSO-NA-U6w" id="MVs-Yl-Tvs"/>
+                                            <outlet property="commentCount" destination="tFq-fu-klP" id="PZO-HM-hZS"/>
+                                            <outlet property="image" destination="kKh-BY-u7r" id="pw4-jv-Odg"/>
+                                            <outlet property="likeCount" destination="rrV-6Q-wF3" id="bh7-1V-OE2"/>
+                                            <outlet property="name" destination="a5O-ey-dTi" id="1g6-tm-N9m"/>
+                                            <outlet property="nameInCaption" destination="36B-dz-TCo" id="xZE-Oe-12J"/>
+                                            <outlet property="profileImage" destination="C01-KP-nif" id="HP2-0P-Aag"/>
+                                            <outlet property="timestamp" destination="jRP-uD-8T9" id="36B-Wf-ngE"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -355,6 +365,9 @@
                         <viewLayoutGuide key="safeArea" id="Pza-0H-MVQ"/>
                     </view>
                     <navigationItem key="navigationItem" id="LLs-Cw-AIv"/>
+                    <connections>
+                        <outlet property="tableView" destination="rB6-CT-mnF" id="q9g-uA-fRY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y8q-Yx-h1e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -481,9 +494,13 @@
                     <navigationItem key="navigationItem" id="g3O-6D-ECn">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="twitter-icon" id="UBF-ID-GTO">
                             <color key="tintColor" red="0.80650906739999995" green="0.39244415539999999" blue="0.1449135718" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <connections>
+                                <action selector="didPost:" destination="h2d-V2-rZS" id="v2c-34-d3G"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="captionTextView" destination="yYA-NY-nqp" id="VJQ-RH-xk6"/>
                         <outlet property="postImageView" destination="32V-aN-qXx" id="bhR-p2-K4z"/>
                     </connections>
                 </viewController>

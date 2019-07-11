@@ -7,20 +7,24 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Post.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface PostCell : UITableViewCell
 
+@property (strong, nonatomic) Post *post;
 
+@property (weak, nonatomic) IBOutlet UIImageView *profileImage;
+@property (weak, nonatomic) IBOutlet UILabel *name;
+@property (weak, nonatomic) IBOutlet UIImageView *image;
+@property (weak, nonatomic) IBOutlet UILabel *likeCount;
+@property (weak, nonatomic) IBOutlet UILabel *commentCount;
+@property (weak, nonatomic) IBOutlet UILabel *caption;
+@property (weak, nonatomic) IBOutlet UILabel *nameInCaption;
+@property (weak, nonatomic) IBOutlet UILabel *timestamp;
 
-//@property (nonatomic, strong) NSString *postID;
-//@property (nonatomic, strong) NSString *userID;
-//@property (nonatomic, strong) NSString *caption;
-//@property (nonatomic, strong) PFUser *author;
-//@property (nonatomic, strong) PFFileObject *image;
-//@property (nonatomic, strong) NSNumber *likeCount;
-//@property (nonatomic, strong) NSNumber *commentCount;
+// - (void) refreshDataAtCell:(PostCell*)cell withPost:(Post*)currentPost;
 
 
 @end
