@@ -18,16 +18,19 @@
     self.profileImage.layer.cornerRadius = 27;
     
     PFFileObject *userImageFile = post.image;
+    
+    PFUser *user = post.author;
+    self.name.text = user[@"username"];
+    self.nameInCaption.text = user[@"username"];
+    
+    self.caption.text = post.caption;
+  
+    self.likeCount.text = [NSString stringWithFormat:@"%@", post.likeCount];
+    self.commentCount.text = [NSString stringWithFormat:@"%@", post.commentCount];
+    
     [userImageFile getDataInBackgroundWithBlock:^(NSData * _Nullable data, NSError * _Nullable error) {
         if (!error) {
-            
-            self.name.text = post.author.username;
-            self.nameInCaption.text = post.author.username;
-            self.caption.text = post.caption;
             self.image.image = [UIImage imageWithData:data];
-            self.likeCount.text = [NSString stringWithFormat:@"%@", post.likeCount];
-            self.commentCount.text = [NSString stringWithFormat:@"%@", post.commentCount];
-
             // Profile image
             PFFileObject *profileImageFile = post.author[@"profileImage"];
             

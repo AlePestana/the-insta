@@ -11,13 +11,18 @@
 #import "AppDelegate.h"
 #import "LoginViewController.h"
 #import "Post.h"
+#import "HomeViewController.h"
+#import "PostCell.h"
 
 
-@interface ProfileViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface ProfileViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
 @property (strong, nonatomic) UIImage *selectedImage;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+
+@property (strong, nonatomic) NSMutableArray *posts;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 
 @end
@@ -27,13 +32,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
+    
+    [self fetchPosts];
+    
     self.user = [PFUser currentUser];
 
     PFFileObject *profileImageFile = [PFUser currentUser][@"profileImage"];
     [profileImageFile getDataInBackgroundWithBlock:^(NSData * _Nullable data, NSError * _Nullable error) {
         if (!error) {
     self.profileImageView.image = [UIImage imageWithData:data];
-    self.nameLabel.text = self.user.username;
+    self.nameLabel.text = self.user[@"username"];
         }
     }];
 }
@@ -131,6 +141,56 @@
     }
 }
 
+
+// Code necessary to display the user's posts
+
+
+// Function to fetch posts - call Parse get function
+- (void)fetchPosts {
+    // construct query
+    PFQuery *query = [PFQuery queryWithClassName:@"Post"];
+    
+    [query whereKey:@"author" equalTo:[PFUser currentUser]];
+    [query includeKey:@"author"];
+    
+    [query orderByDescending:@"createdAt"];
+    
+    // fetch data asynchronously
+    [query findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
+        if (posts != nil) {
+            // do something with the array of object returned by the call
+            
+            self.posts = posts;
+            
+            // Update table view
+            [self.tableView reloadData];
+            
+        } else {
+            NSLog(@"%@", error.localizedDescription);
+        }
+    }];
+    
+}
+
+
+// Function of table view data source protocol
+- (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    // Deque cell
+    PostCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PostCell" forIndexPath:indexPath];
+    
+    // Update cell with tweet data
+    Post *post = self.posts[indexPath.row];
+    cell.post = post;
+    
+    // Return cell to the table view
+    return cell;
+}
+
+
+// Function of table view data source protocol
+- (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return  self.posts.count;
+}
 
 
 /*
