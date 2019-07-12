@@ -13,6 +13,7 @@
 #import "Post.h"
 #import "HomeViewController.h"
 #import "PostCell.h"
+#import "DetailViewController.h"
 
 
 @interface ProfileViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITableViewDataSource, UITableViewDelegate>
@@ -37,15 +38,17 @@
     
     [self fetchPosts];
     
-    self.user = [PFUser currentUser];
+    //self.user = [PFUser currentUser];
 
-    PFFileObject *profileImageFile = [PFUser currentUser][@"profileImage"];
+    PFFileObject *profileImageFile = self.user[@"profileImage"];
     [profileImageFile getDataInBackgroundWithBlock:^(NSData * _Nullable data, NSError * _Nullable error) {
         if (!error) {
-    self.profileImageView.image = [UIImage imageWithData:data];
-    self.nameLabel.text = self.user[@"username"];
+            self.profileImageView.image = [UIImage imageWithData:data];
+            self.nameLabel.text = self.user.username;
         }
     }];
+    
+    
 }
 
 

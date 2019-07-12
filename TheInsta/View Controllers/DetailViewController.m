@@ -10,6 +10,7 @@
 #import "Post.h"
 #import "Parse/Parse.h"
 #import "NSDate+DateTools.h"
+#import "ProfileViewController.h"
 
 @interface DetailViewController ()
 
@@ -68,8 +69,27 @@
             NSLog(@"Image not taken from PFFile");
         }
     }];
+    
+    // Tap gesture for profile image
+    
+    UITapGestureRecognizer *singleFingerTap =
+    [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
+    [self.profileImageView setUserInteractionEnabled:YES];
+    [self.profileImageView addGestureRecognizer:singleFingerTap];
+    
+    
+    //The event handling method
+    
 }
 
+
+- (void)handleSingleTap:(UITapGestureRecognizer *)recognizer {
+    CGPoint location = [recognizer locationInView:[recognizer.view superview]];
+    [self performSegueWithIdentifier:@"usersProfileSegue" sender:self];
+    NSLog(@"Success");
+    //Do stuff here...
+    
+}
 
 // Function that refreshes the data
 -(void) refreshData {
@@ -132,14 +152,22 @@
 
 
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if ([[segue identifier] isEqualToString:@"usersProfileSegue"]) {
+        
+        PFUser *user = [PFUser currentUser];
+        ProfileViewController *profileViewController = [segue destinationViewController];
+        profileViewController.user = user;
+        
+        NSLog(@"Success seeing users profile");
+    }
 }
-*/
+
 
 @end

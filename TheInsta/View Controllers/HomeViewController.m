@@ -45,6 +45,7 @@
      action:@selector(beginRefresh:)
      forControlEvents:UIControlEventValueChanged
      ];
+    
     [self.tableView insertSubview:self.refreshControl atIndex:0];
 }
 
