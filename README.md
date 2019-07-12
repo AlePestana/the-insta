@@ -36,7 +36,7 @@ The following **optional** features are implemented:
 The following **additional** features are implemented:
 
 - [x] Add a confirm password functionality that presents an alert if the user doesn't confirm his password.
-- [ ] Using AutoLayout, the Post cell adjusts it's layout for iPhone 7, Plus and SE device sizes as well as accommodate device rotation.
+- [x] Using AutoLayout, the Post cell adjusts it's layout for iPhone 7, Plus and SE device sizes as well as accommodate device rotation.
 - [x] Profile view includes the user's timeline (posts he has posted).
 - [x] Add placeholder to caption text view.
 - [ ] Add custom action for center tab using a tab bar delegate.
@@ -50,7 +50,9 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='http://g.recordit.co/vmpXiS35ja.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://recordit.co/viQkVDo2DL' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://recordit.co/MjysOR0w8u' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
