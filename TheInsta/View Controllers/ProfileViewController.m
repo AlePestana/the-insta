@@ -38,6 +38,10 @@
     
     [self fetchPosts];
     
+    if (!self.user) {
+        self.user = [PFUser currentUser];
+    }
+    
     //self.user = [PFUser currentUser];
 
     PFFileObject *profileImageFile = self.user[@"profileImage"];

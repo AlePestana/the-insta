@@ -161,7 +161,7 @@
     // Pass the selected object to the new view controller.
     if ([[segue identifier] isEqualToString:@"usersProfileSegue"]) {
         
-        PFUser *user = [PFUser currentUser];
+        PFUser *user = self.post.author;
         ProfileViewController *profileViewController = [segue destinationViewController];
         profileViewController.user = user;
         

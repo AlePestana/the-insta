@@ -78,9 +78,6 @@
 // Function to post a user's profile image on Parse's database
 + (void) postProfileUserImage: ( UIImage * _Nullable )profileImage withCompletion: (PFBooleanResultBlock  _Nullable)completion {
     
-    // Set user to the current user
-    // PFUser *user = [PFUser currentUser];
-    // PFQuery *query = [PFQuery queryWithClassName:@"User"];
     
     NSData *imageData = UIImagePNGRepresentation(profileImage);
     
